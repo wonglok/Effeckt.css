@@ -20,21 +20,22 @@
     }
   }
 
-  (function depCheck(){
-    checkDefined(Effeckt, 'Effect core');
-    checkDefined(Effeckt.buttonPressedEvent, 'Effect button pressed event');
-    checkDefined(Effeckt.buttonUpEvent, 'Effect button up event');
-  }());
+  checkDefined(angular, 'AngularJS');
+  checkDefined(angular.module('ngAnimate'), 'ngAnimate');
+
+  checkDefined(Effeckt, 'Effect core');
+  checkDefined(Effeckt.transitionEndEventName, 'Effect transtion end event');
+  checkDefined(Effeckt.buttonPressedEvent, 'Effect button pressed event');
+  checkDefined(Effeckt.buttonUpEvent, 'Effect button up event');
+
+
+  var __clickEvent = Effeckt.buttonPressedEvent;
+  var __mouseupEvent = Effeckt.buttonUpEvent;
+  var __transitionEndEvent = Effeckt.transitionEndEventName;
+
 
 
   angular.module('ngEffeckt')
-    .factory('clickEvent', function () {
-      return Effeckt.buttonPressedEvent;
-    })
-    .factory('mouseupEvent', function () {
-      return Effeckt.buttonUpEvent;
-    })
-
     .factory('Mediator', function(){
       //http://carldanley.com/js-mediator-pattern/
       function Mediator() {
@@ -89,7 +90,7 @@
           if (!doneTsk){
             doneTsk = true;
             endFn(evt);
-            element.removeEventListener('transitionend',_handleTransitionEnd);
+            element.removeEventListener(__transitionEndEvent,_handleTransitionEnd);
           }
         };
         // safynet if the tranns event is not fired.
@@ -97,10 +98,10 @@
           if (!doneTsk){
             doneTsk = true;
             endFn(null);
-            element.removeEventListener('transitionend',_handleTransitionEnd);
+            element.removeEventListener(__transitionEndEvent,_handleTransitionEnd);
           }
         }, maxTime || 1500);
-        element.addEventListener('transitionend',_handleTransitionEnd,false);
+        element.addEventListener(__transitionEndEvent,_handleTransitionEnd,false);
       }
       return _doTransEnd;
     })
@@ -117,7 +118,7 @@
     })
 
 
-    .directive('effecktNgContainer', function (clickEvent, offNavMediator, _doTransEnd) {
+    .directive('effecktNgContainer', function (offNavMediator, _doTransEnd) {
 
       //from class.ie
       //https://github.com/desandro/classie/blob/master/classie.js
@@ -152,7 +153,7 @@
 
       return {
         restrict: 'C',
-        controller: function ($scope, $element) {
+        link: function ($scope, $element) {
           var _onOpenMenu = function(){
             console.log('page:open:menu');
 
@@ -165,7 +166,7 @@
             },5);
 
             _doTransEnd($element[0], function _cbmMakePageCloseBtn(){
-              $element[0].addEventListener(clickEvent, _onClosePage,true);
+              $element[0].addEventListener(__clickEvent, _onClosePage,true);
             },1000);
 
           };
@@ -180,7 +181,7 @@
               $element.removeClass('effeckt-ng-lock-scroll');
             },800);
 
-            $element[0].removeEventListener(clickEvent, _onClosePage, true);
+            $element[0].removeEventListener(__clickEvent, _onClosePage, true);
           };
 
           offNavMediator.subscribe('page:open', _onOpenMenu);
@@ -195,8 +196,8 @@
 
           $scope.offNavMediator = offNavMediator;
 
-          $scope.swipeOpenMenu = function(){
-            console.log('swipeOpenMenu');
+          $scope._swipeOpenMenu = function(){
+            console.log('_swipeOpenMenu');
             if (Modernizr.touch){
               offNavMediator.publish('page:open');
             }
@@ -206,7 +207,7 @@
       };
     })
 
-    .directive('effecktNgNavTrigger', function (clickEvent, offNavMediator) {
+    .directive('effecktNgNavTrigger', function (offNavMediator) {
 
       return {
         restrict: 'C',
@@ -214,13 +215,13 @@
           var _onClickMenuBtn = function(){
             offNavMediator.publish('page:open');
           };
-          $element[0].addEventListener(clickEvent, _onClickMenuBtn,true);
+          $element[0].addEventListener(__clickEvent, _onClickMenuBtn,true);
           offNavMediator.publish('page:open');
 
         }
       };
     })
-    .directive('effecktNgMenuBtn', function (clickEvent, offNavMediator) {
+    .directive('effecktNgMenuBtn', function (offNavMediator) {
 
       return {
         restrict: 'C',
@@ -242,21 +243,19 @@
           var _onClickMenuBtn = function(){
             offNavMediator.publish('page:open');
           };
-          setTimeout(function(){
-            _onClickMenuBtn();
-          },1000);
 
-          $element[0].addEventListener(clickEvent, _onClickMenuBtn,true);
+
+          $element[0].addEventListener(__clickEvent, _onClickMenuBtn,true);
 
           $scope.$on('$destroy',function(){
-            $element[0].removeEventListener(clickEvent, _onClickMenuBtn);
+            $element[0].removeEventListener(__clickEvent, _onClickMenuBtn);
           });
 
         }
       };
     })
 
-    .directive('effecktNgMenuBtnClose', function (clickEvent, offNavMediator) {
+    .directive('effecktNgMenuBtnClose', function (offNavMediator) {
       return {
         restrict: 'C',
         controller: function ($scope, $element) {
@@ -264,14 +263,15 @@
           var _onClickMenuBtnClose = function(){
             offNavMediator.publish('page:close');
           };
-          $element[0].addEventListener(clickEvent, _onClickMenuBtnClose,true);
+          $element[0].addEventListener(__clickEvent, _onClickMenuBtnClose,true);
           $scope.$on('$destroy',function(){
-            $element[0].removeEventListener(clickEvent, _onClickMenuBtnClose);
+            $element[0].removeEventListener(__clickEvent, _onClickMenuBtnClose);
           });
         }
       };
     })
-    .directive('effecktNgNav', function (mouseupEvent) {
+
+    .directive('effecktNgNav', function () {
       function _makeLinkFaster(evt) {
         //delegate
         if(evt.target && evt.target.nodeName === 'A' && evt.target.href && !!!evt.target.attributes.closebtn) {
@@ -283,9 +283,9 @@
       return {
         restrict: 'C',
         controller: function ($scope, $element) {
-          $element[0].addEventListener(mouseupEvent, _makeLinkFaster,true);
+          $element[0].addEventListener(__mouseupEvent, _makeLinkFaster,true);
           $scope.$on('$destroy',function(){
-            $element[0].removeEventListener(mouseupEvent, _makeLinkFaster);
+            $element[0].removeEventListener(__mouseupEvent, _makeLinkFaster);
           });
         },
       };

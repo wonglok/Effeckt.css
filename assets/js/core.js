@@ -37,7 +37,7 @@
   // Initialization method
   Effeckt.prototype.init = function() {
     this.buttonPressedEvent = buttonPressedEvent;
-    this.buttonUpEvent = buttonPressedEvent;
+    this.buttonUpEvent = buttonUpEvent;
 
     //event trigger after animation/transition end.
     this.transitionEndEventName = Modernizr ? transitionEndEventNames[Modernizr.prefixed('transition')] : getTransitionEndEventNames();

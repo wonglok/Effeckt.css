@@ -33,14 +33,6 @@ body,
   z-index: 100;
 }
 
-.effeckt-ng-container.effeckt-ng-lock-scroll {
-  overflow: hidden;
-}
-
-.effeckt-ng-container.effeckt-ng-lock-scroll .effeckt-ng-view {
-  overflow: hidden;
-}
-
 /* ============================================
 Page 3D Effeckt
    ============================================ */
@@ -58,16 +50,22 @@ Page 3D Effeckt
   ============================================ */
 }
 
+.effeckt-ng-3d-page-zoom.effeckt-ng-open-menu {
+  overflow: hidden;
+}
+
+.effeckt-ng-3d-page-zoom.effeckt-ng-open-menu .effeckt-ng-view {
+  overflow: hidden;
+}
+
 .effeckt-ng-3d-page-zoom .effeckt-ng-view {
   -webkit-transform-origin: 100% 50%;
   -ms-transform-origin: 100% 50%;
   -o-transform-origin: 100% 50%;
   transform-origin: 100% 50%;
-  will-change: opacity, transform;
 }
 
 .effeckt-ng-3d-page-zoom:not(.effeckt-ng-open-menu) .effeckt-ng-view {
-  will-change: none;
   -webkit-transform: none;
   -ms-transform: none;
   -o-transform: none;
@@ -79,7 +77,6 @@ Page 3D Effeckt
 }
 
 .effeckt-ng-3d-page-zoom.effeckt-ng-open-menu .effeckt-ng-view {
-  will-change: opacity, transform;
   -webkit-transform: rotateY(-30deg);
   -ms-transform: rotateY(-30deg);
   -o-transform: rotateY(-30deg);
@@ -105,7 +102,6 @@ Page 3D Effeckt
 }
 
 .effeckt-ng-3d-page-zoom.effeckt-ng-open-menu .effeckt-ng-view.ng-enter {
-  will-change: opacity, transform;
   -webkit-transform: rotateY(-30deg) scale(0.7);
   -ms-transform: rotateY(-30deg) scale(0.7);
   -o-transform: rotateY(-30deg) scale(0.7);
@@ -116,7 +112,6 @@ Page 3D Effeckt
 .effeckt-ng-3d-page-zoom.effeckt-ng-open-menu .effeckt-ng-view.ng-enter.ng-enter-active,
 .effeckt-ng-3d-page-zoom.effeckt-ng-open-menu .effeckt-ng-view.ng-leave,
 .effeckt-ng-3d-page-zoom.effeckt-ng-open-menu .effeckt-ng-view {
-  will-change: opacity, transform;
   -webkit-transform: rotateY(-30deg);
   -ms-transform: rotateY(-30deg);
   -o-transform: rotateY(-30deg);
@@ -138,12 +133,14 @@ Page 3D Effeckt
   ============================================ */
 }
 
+.effeckt-ng-2d-page-fade:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-leave,
 .effeckt-ng-2d-page-fade:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-leave.ng-leave-active {
   -webkit-transition: all 0.5s 0.1s;
   -o-transition: all 0.5s 0.1s;
   transition: all 0.5s 0.1s;
 }
 
+.effeckt-ng-2d-page-fade:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-enter,
 .effeckt-ng-2d-page-fade:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-enter.ng-enter-active {
   -webkit-transition: all 0.5s 0.6s;
   -o-transition: all 0.5s 0.6s;
@@ -151,11 +148,11 @@ Page 3D Effeckt
 }
 
 .effeckt-ng-2d-page-fade:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-enter {
-  -webkit-transform: translate3d(-5%, 0, 0);
-  -ms-transform: translate3d(-5%, 0, 0);
-  -o-transform: translate3d(-5%, 0, 0);
-  transform: translate3d(-5%, 0, 0);
   opacity: 0;
+  -webkit-transform: translate3d(-2%, 0, 0);
+  -ms-transform: translate3d(-2%, 0, 0);
+  -o-transform: translate3d(-2%, 0, 0);
+  transform: translate3d(-2%, 0, 0);
 }
 
 .effeckt-ng-2d-page-fade:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-enter.ng-enter-active,
@@ -169,14 +166,56 @@ Page 3D Effeckt
 }
 
 .effeckt-ng-2d-page-fade:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-leave.ng-leave-active {
-  -webkit-transform: translate3d(5%, 0, 0);
-  -ms-transform: translate3d(5%, 0, 0);
-  -o-transform: translate3d(5%, 0, 0);
-  transform: translate3d(5%, 0, 0);
+  opacity: 0;
+  -webkit-transform: translate3d(2%, 0, 0);
+  -ms-transform: translate3d(2%, 0, 0);
+  -o-transform: translate3d(2%, 0, 0);
+  transform: translate3d(2%, 0, 0);
+}
+
+.effeckt-ng-2d-page-ios-preview-move {
+  /* ============================================
+  2D page transition when menu is closed
+  ============================================ */
+}
+
+.effeckt-ng-2d-page-ios-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-leave,
+.effeckt-ng-2d-page-ios-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-leave.ng-leave-active {
+  -webkit-transition: all 0.2s 0.1s;
+  -o-transition: all 0.2s 0.1s;
+  transition: all 0.2s 0.1s;
+}
+
+.effeckt-ng-2d-page-ios-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-enter,
+.effeckt-ng-2d-page-ios-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-enter.ng-enter-active {
+  -webkit-transition: all 0.75s 0.3s;
+  -o-transition: all 0.75s 0.3s;
+  transition: all 0.75s 0.3s;
+}
+
+.effeckt-ng-2d-page-ios-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-enter {
+  -webkit-transform: translate3d(0, -150%, 0);
+  -ms-transform: translate3d(0, -150%, 0);
+  -o-transform: translate3d(0, -150%, 0);
+  transform: translate3d(0, -150%, 0);
   opacity: 0;
 }
 
-.effeckt-ng-menu-fade-onebyone {
+.effeckt-ng-2d-page-ios-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-enter.ng-enter-active,
+.effeckt-ng-2d-page-ios-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-leave,
+.effeckt-ng-2d-page-ios-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view {
+  opacity: 1;
+  -webkit-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none;
+}
+
+.effeckt-ng-2d-page-ios-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+
+.effeckt-ng-menu-1by1-fade {
   /* ============================================
   Menu Fade In
   ============================================ */
@@ -186,7 +225,7 @@ Page 3D Effeckt
    ============================================ */
 }
 
-.effeckt-ng-menu-fade-onebyone .effeckt-ng-nav {
+.effeckt-ng-menu-1by1-fade .effeckt-ng-nav {
   position: absolute;
   top: 0;
   left: 0;
@@ -196,7 +235,7 @@ Page 3D Effeckt
   will-change: opacity, transform;
 }
 
-.effeckt-ng-menu-fade-onebyone:not(.effeckt-ng-open-menu) .effeckt-ng-nav {
+.effeckt-ng-menu-1by1-fade:not(.effeckt-ng-open-menu) .effeckt-ng-nav {
   -webkit-transition: opacity 0.5s, -webkit-transform 0s 0.5s;
   -o-transition: opacity 0.5s, -o-transform 0s 0.5s;
   transition: opacity 0.5s, -ms-transform 0s 0.5s;
@@ -208,7 +247,7 @@ Page 3D Effeckt
   transform: translate3d(-100%, 0, 0);
 }
 
-.effeckt-ng-menu-fade-onebyone.effeckt-ng-open-menu .effeckt-ng-nav {
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav {
   -webkit-transition: opacity 0.5s 0.75s;
   -o-transition: opacity 0.5s 0.75s;
   transition: opacity 0.5s 0.75s;
@@ -219,13 +258,13 @@ Page 3D Effeckt
   transform: translate3d(0, 0, 0);
 }
 
-.effeckt-ng-menu-fade-onebyone .effeckt-ng-nav h2,
-.effeckt-ng-menu-fade-onebyone .effeckt-ng-nav ul li {
+.effeckt-ng-menu-1by1-fade .effeckt-ng-nav h2,
+.effeckt-ng-menu-1by1-fade .effeckt-ng-nav ul li {
   will-change: transform, opacity;
 }
 
-.effeckt-ng-menu-fade-onebyone:not(.effeckt-ng-open-menu) .effeckt-ng-nav h2,
-.effeckt-ng-menu-fade-onebyone:not(.effeckt-ng-open-menu) .effeckt-ng-nav ul li {
+.effeckt-ng-menu-1by1-fade:not(.effeckt-ng-open-menu) .effeckt-ng-nav h2,
+.effeckt-ng-menu-1by1-fade:not(.effeckt-ng-open-menu) .effeckt-ng-nav ul li {
   -webkit-transition: -webkit-transform 0s, opacity 0s;
   -o-transition: -o-transform 0s, opacity 0s;
   transition: -ms-transform 0s, opacity 0s;
@@ -237,8 +276,8 @@ Page 3D Effeckt
   opacity: 0;
 }
 
-.effeckt-ng-menu-fade-onebyone.effeckt-ng-open-menu .effeckt-ng-nav h2,
-.effeckt-ng-menu-fade-onebyone.effeckt-ng-open-menu .effeckt-ng-nav ul li {
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav h2,
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav ul li {
   -webkit-transition: -webkit-transform 0.5s, opacity 1s;
   -o-transition: -o-transform 0.5s, opacity 1s;
   transition: -ms-transform 0.5s, opacity 1s;
@@ -250,97 +289,271 @@ Page 3D Effeckt
   opacity: 1;
 }
 
-.effeckt-ng-menu-fade-onebyone.effeckt-ng-open-menu .effeckt-ng-nav h2 {
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav h2 {
   -webkit-transition-delay: 1.25s;
   -o-transition-delay: 1.25s;
   transition-delay: 1.25s;
 }
 
-.effeckt-ng-menu-fade-onebyone.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(1) {
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(1) {
   -webkit-transition-delay: 1.35s;
   -o-transition-delay: 1.35s;
   transition-delay: 1.35s;
 }
 
-.effeckt-ng-menu-fade-onebyone.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(2) {
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(2) {
   -webkit-transition-delay: 1.45s;
   -o-transition-delay: 1.45s;
   transition-delay: 1.45s;
 }
 
-.effeckt-ng-menu-fade-onebyone.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(3) {
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(3) {
   -webkit-transition-delay: 1.55s;
   -o-transition-delay: 1.55s;
   transition-delay: 1.55s;
 }
 
-.effeckt-ng-menu-fade-onebyone.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(4) {
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(4) {
   -webkit-transition-delay: 1.65s;
   -o-transition-delay: 1.65s;
   transition-delay: 1.65s;
 }
 
-.effeckt-ng-menu-fade-onebyone.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(5) {
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(5) {
   -webkit-transition-delay: 1.75s;
   -o-transition-delay: 1.75s;
   transition-delay: 1.75s;
 }
 
-.effeckt-ng-menu-fade-onebyone.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(6) {
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(6) {
   -webkit-transition-delay: 1.85s;
   -o-transition-delay: 1.85s;
   transition-delay: 1.85s;
 }
 
-.effeckt-ng-menu-fade-onebyone.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(7) {
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(7) {
   -webkit-transition-delay: 1.95s;
   -o-transition-delay: 1.95s;
   transition-delay: 1.95s;
 }
 
-.effeckt-ng-menu-fade-onebyone.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(8) {
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(8) {
   -webkit-transition-delay: 2.05s;
   -o-transition-delay: 2.05s;
   transition-delay: 2.05s;
 }
 
-.effeckt-ng-menu-fade-onebyone.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(9) {
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(9) {
   -webkit-transition-delay: 2.15s;
   -o-transition-delay: 2.15s;
   transition-delay: 2.15s;
 }
 
-.effeckt-ng-menu-fade-onebyone.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(10) {
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(10) {
   -webkit-transition-delay: 2.25s;
   -o-transition-delay: 2.25s;
   transition-delay: 2.25s;
 }
 
-.effeckt-ng-menu-fade-onebyone.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(11) {
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(11) {
   -webkit-transition-delay: 2.35s;
   -o-transition-delay: 2.35s;
   transition-delay: 2.35s;
 }
 
-.effeckt-ng-menu-fade-onebyone.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(12) {
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(12) {
   -webkit-transition-delay: 2.45s;
   -o-transition-delay: 2.45s;
   transition-delay: 2.45s;
 }
 
-.effeckt-ng-menu-fade-onebyone.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(13) {
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(13) {
   -webkit-transition-delay: 2.55s;
   -o-transition-delay: 2.55s;
   transition-delay: 2.55s;
 }
 
-.effeckt-ng-menu-fade-onebyone.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(14) {
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(14) {
   -webkit-transition-delay: 2.65s;
   -o-transition-delay: 2.65s;
   transition-delay: 2.65s;
 }
 
-.effeckt-ng-menu-fade-onebyone.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(15) {
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(15) {
+  -webkit-transition-delay: 2.75s;
+  -o-transition-delay: 2.75s;
+  transition-delay: 2.75s;
+}
+
+.effeckt-ng-menu-1by1-flip {
+  /* ============================================
+  Menu Fade In
+  ============================================ */
+  /* ============================================
+    stagerring effect
+    list item slide in one by one :)
+   ============================================ */
+}
+
+.effeckt-ng-menu-1by1-flip .effeckt-ng-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 400;
+  width: 240px;
+  height: 100%;
+  will-change: opacity, transform;
+}
+
+.effeckt-ng-menu-1by1-flip:not(.effeckt-ng-open-menu) .effeckt-ng-nav {
+  -webkit-transition: opacity 0.5s, -webkit-transform 0s 0.5s;
+  -o-transition: opacity 0.5s, -o-transform 0s 0.5s;
+  transition: opacity 0.5s, -ms-transform 0s 0.5s;
+  transition: opacity 0.5s, transform 0s 0.5s;
+  opacity: 0;
+  -webkit-transform: translate3d(-100%, 0, 0);
+  -ms-transform: translate3d(-100%, 0, 0);
+  -o-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav {
+  -webkit-transition: opacity 0.5s 0.75s;
+  -o-transition: opacity 0.5s 0.75s;
+  transition: opacity 0.5s 0.75s;
+  opacity: 0.85;
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.effeckt-ng-menu-1by1-flip .effeckt-ng-nav h2,
+.effeckt-ng-menu-1by1-flip .effeckt-ng-nav ul li {
+  -webkit-perspective: 500px;
+  -ms-perspective: 500px;
+  -o-perspective: 500px;
+  perspective: 500px;
+  will-change: transform, opacity;
+}
+
+.effeckt-ng-menu-1by1-flip:not(.effeckt-ng-open-menu) .effeckt-ng-nav h2,
+.effeckt-ng-menu-1by1-flip:not(.effeckt-ng-open-menu) .effeckt-ng-nav ul li {
+  -webkit-transition: -webkit-transform 0s, opacity 0s;
+  -o-transition: -o-transform 0s, opacity 0s;
+  transition: -ms-transform 0s, opacity 0s;
+  transition: transform 0s, opacity 0s;
+  -webkit-transform: rotateY(3deg) translate3d(-50px, 0, 0);
+  -ms-transform: rotateY(3deg) translate3d(-50px, 0, 0);
+  -o-transform: rotateY(3deg) translate3d(-50px, 0, 0);
+  transform: rotateY(3deg) translate3d(-50px, 0, 0);
+  opacity: 0;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav h2,
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav ul li {
+  -webkit-transition: -webkit-transform 0.5s, opacity 1s;
+  -o-transition: -o-transform 0.5s, opacity 1s;
+  transition: -ms-transform 0.5s, opacity 1s;
+  transition: transform 0.5s, opacity 1s;
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav h2 {
+  -webkit-transition-delay: 1.25s;
+  -o-transition-delay: 1.25s;
+  transition-delay: 1.25s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(1) {
+  -webkit-transition-delay: 1.35s;
+  -o-transition-delay: 1.35s;
+  transition-delay: 1.35s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(2) {
+  -webkit-transition-delay: 1.45s;
+  -o-transition-delay: 1.45s;
+  transition-delay: 1.45s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(3) {
+  -webkit-transition-delay: 1.55s;
+  -o-transition-delay: 1.55s;
+  transition-delay: 1.55s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(4) {
+  -webkit-transition-delay: 1.65s;
+  -o-transition-delay: 1.65s;
+  transition-delay: 1.65s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(5) {
+  -webkit-transition-delay: 1.75s;
+  -o-transition-delay: 1.75s;
+  transition-delay: 1.75s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(6) {
+  -webkit-transition-delay: 1.85s;
+  -o-transition-delay: 1.85s;
+  transition-delay: 1.85s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(7) {
+  -webkit-transition-delay: 1.95s;
+  -o-transition-delay: 1.95s;
+  transition-delay: 1.95s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(8) {
+  -webkit-transition-delay: 2.05s;
+  -o-transition-delay: 2.05s;
+  transition-delay: 2.05s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(9) {
+  -webkit-transition-delay: 2.15s;
+  -o-transition-delay: 2.15s;
+  transition-delay: 2.15s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(10) {
+  -webkit-transition-delay: 2.25s;
+  -o-transition-delay: 2.25s;
+  transition-delay: 2.25s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(11) {
+  -webkit-transition-delay: 2.35s;
+  -o-transition-delay: 2.35s;
+  transition-delay: 2.35s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(12) {
+  -webkit-transition-delay: 2.45s;
+  -o-transition-delay: 2.45s;
+  transition-delay: 2.45s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(13) {
+  -webkit-transition-delay: 2.55s;
+  -o-transition-delay: 2.55s;
+  transition-delay: 2.55s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(14) {
+  -webkit-transition-delay: 2.65s;
+  -o-transition-delay: 2.65s;
+  transition-delay: 2.65s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(15) {
   -webkit-transition-delay: 2.75s;
   -o-transition-delay: 2.75s;
   transition-delay: 2.75s;
@@ -355,17 +568,26 @@ Button Fade in out
   top: 0px;
   right: 0px;
   z-index: 500;
+  will-change: opacity, transform;
+  -webkit-transition: opacity 1s 0.15s, -webkit-transform 1s 0.15s;
+  -o-transition: opacity 1s 0.15s, -o-transform 1s 0.15s;
+  transition: opacity 1s 0.15s, -ms-transform 1s 0.15s;
+  transition: opacity 1s 0.15s, transform 1s 0.15s;
   opacity: 1;
-  will-change: opacity, top;
-  -webkit-transition: opacity 1s 0.75s;
-  -o-transition: opacity 1s 0.75s;
-  transition: opacity 1s 0.75s;
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 
-.effeckt-ng-menu-btn.effeckt-ng-open-menu.effeckt-ng-menu-btn {
-  -webkit-transition: opacity 0.3s, top 0.1s 0.3s;
-  -o-transition: opacity 0.3s, top 0.1s 0.3s;
-  transition: opacity 0.3s, top 0.1s 0.3s;
+.effeckt-ng-menu-btn.effeckt-ng-open-menu {
+  -webkit-transition: opacity 0.3s, -webkit-transform 1s 0s;
+  -o-transition: opacity 0.3s, -o-transform 1s 0s;
+  transition: opacity 0.3s, -ms-transform 1s 0s;
+  transition: opacity 0.3s, transform 1s 0s;
   opacity: 0;
-  top: -100%;
+  -webkit-transform: translate3d(0, -200px, 0);
+  -ms-transform: translate3d(0, -200px, 0);
+  -o-transform: translate3d(0, -200px, 0);
+  transform: translate3d(0, -200px, 0);
 }

@@ -13,23 +13,21 @@
 
 
   <!-- resuable/boilerplate start here >v<~ -->
-  <link href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.css" rel="stylesheet" type="text/css" title="Default Style">
-  <link href="assets/css/modules/ng-page-menu-transitions.css" rel="stylesheet" type="text/css" title="Default Style">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.css" rel="stylesheet" type="text/css">
+  <link href="assets/css/modules/ng-page-menu-transitions.css" rel="stylesheet" type="text/css">
   <!-- resuable/boilerplate end here >v<~ -->
 
-
   <!-- your own customization start here @o@ -->
-  <link href="assets/css/demo/demo-angular-transition.css" rel="stylesheet" type="text/css" title="Default Style">
+  <link href="assets/css/demo/demo-angular-transition.css" rel="stylesheet" type="text/css">
   <!-- your own customization end here @o@ -->
-
 
 </head>
 
 <body ng-app='yourApp'>
 
   <!-- resuable/boilerplate start here >v<~ -->
-  <button class="effeckt-ng-menu-btn">Open Sesame</button>
-  <div class="effeckt-ng-container effeckt-ng-3d-page-zoom effeckt-ng-2d-page-fade effeckt-ng-menu-fade-onebyone" easy-effeckt-switch>
+  <div class="effeckt-ng-menu-btn">Open Sesame</div>
+  <div class="effeckt-ng-container effeckt-ng-3d-page-zoom effeckt-ng-menu-1by1-fade" ng-class='[cur.ng3dPage, cur.ng2dPage, cur.ngMenu]' easy-effeckt-switch>
     <div class="effeckt-ng-nav">
       <div class="effeckt-ng-nav-content">
         <h2 class="">Menu</h2>
@@ -45,10 +43,11 @@
   <!-- resuable/boilerplate end here >v<~ -->
 
   <!-- common lib -->
+  <!--
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/libs/jquery-2.0.3.min.js"><\/script>')</script>
-
+  -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 
   <!-- must include dependent start here *o* -->
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
