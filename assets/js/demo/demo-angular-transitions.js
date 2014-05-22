@@ -27,7 +27,7 @@ function($rootScope){
       'effeckt-ng-3d-page-flip',
     ],
     ng2dPage: [
-      'effeckt-ng-2d-page-ios-preview-move',
+      'effeckt-ng-2d-page-preview-move',
       'effeckt-ng-2d-page-fade'
     ],
     ngMenu: [
@@ -58,6 +58,22 @@ function($rootScope){
     setTimeout(function(){
       window.location.assign('#/work');
     },1000);
+
+    setTimeout(function(){
+      window.location.assign('#/');
+    },2250);
+
+    setTimeout(function(){
+      offNavMediator.publish('page:close');
+    },4000);
+  };
+
+  $scope.testChangePage = function(){
+    window.location.assign('#/work');
+    setTimeout(function(){
+      window.location.assign('#/');
+    },1250);
+
   };
 
 

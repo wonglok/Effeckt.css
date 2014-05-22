@@ -23,13 +23,13 @@ When finished, there's will be an turial about how to isntall and tweak the anim
 <hr>
 
 3D Page Effeckts when menu is opened:
-<br>how is the page transfromed from 2d to 3d
+<br>how is the page/menu transfromed from 2d to 3d scene
 <br>
 and new page in and old page out
 <br>
 <select ng-model="__curPageTran.ng3dPage" ng-options="val for val in __pageTranSel.ng3dPage"></select>
 <br>
-<button ng-click="openMenuThenChangePage()">Test open menu and change page</button>
+<button ng-click="openMenuThenChangePage()">Test change page in 3d menu</button>
 
 <ul>
 	<li ng-repeat="eng3dPage in __pageTranSel.ng3dPage">{{eng3dPage}}</li>
@@ -42,7 +42,8 @@ and new page in and old page out
 <br>
 <select ng-model="__curPageTran.ng2dPage" ng-options="val for val in __pageTranSel.ng2dPage"></select>
 <br>
-<a href="#/work">Test go to work page</a>
+
+<button ng-click="testChangePage()">Test change page in 2d mode</button>
 <ul>
 	<li ng-repeat="each2d in __pageTranSel.ng2dPage">{{each2d}}</li>
 </ul>

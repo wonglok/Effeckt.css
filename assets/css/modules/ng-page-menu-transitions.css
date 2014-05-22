@@ -267,27 +267,27 @@ Page 3D Effeckt - flip (best for ios/desktop)
   transform: translate3d(2%, 0, 0);
 }
 
-.effeckt-ng-2d-page-ios-preview-move {
+.effeckt-ng-2d-page-preview-move {
   /* ============================================
   2D page transition when menu is closed
   ============================================ */
 }
 
-.effeckt-ng-2d-page-ios-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-leave,
-.effeckt-ng-2d-page-ios-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-leave.ng-leave-active {
+.effeckt-ng-2d-page-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-leave,
+.effeckt-ng-2d-page-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-leave.ng-leave-active {
   -webkit-transition: all 0.2s 0.1s;
   -o-transition: all 0.2s 0.1s;
   transition: all 0.2s 0.1s;
 }
 
-.effeckt-ng-2d-page-ios-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-enter,
-.effeckt-ng-2d-page-ios-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-enter.ng-enter-active {
+.effeckt-ng-2d-page-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-enter,
+.effeckt-ng-2d-page-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-enter.ng-enter-active {
   -webkit-transition: all 0.75s 0.3s;
   -o-transition: all 0.75s 0.3s;
   transition: all 0.75s 0.3s;
 }
 
-.effeckt-ng-2d-page-ios-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-enter {
+.effeckt-ng-2d-page-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-enter {
   -webkit-transform: translate3d(0, -150%, 0);
   -ms-transform: translate3d(0, -150%, 0);
   -o-transform: translate3d(0, -150%, 0);
@@ -295,9 +295,9 @@ Page 3D Effeckt - flip (best for ios/desktop)
   opacity: 0;
 }
 
-.effeckt-ng-2d-page-ios-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-enter.ng-enter-active,
-.effeckt-ng-2d-page-ios-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-leave,
-.effeckt-ng-2d-page-ios-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view {
+.effeckt-ng-2d-page-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-enter.ng-enter-active,
+.effeckt-ng-2d-page-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-leave,
+.effeckt-ng-2d-page-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view {
   opacity: 1;
   -webkit-transform: none;
   -ms-transform: none;
@@ -305,7 +305,7 @@ Page 3D Effeckt - flip (best for ios/desktop)
   transform: none;
 }
 
-.effeckt-ng-2d-page-ios-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-leave.ng-leave-active {
+.effeckt-ng-2d-page-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-leave.ng-leave-active {
   opacity: 0;
 }
 
