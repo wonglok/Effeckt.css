@@ -22,20 +22,29 @@ When finished, there's will be an turial about how to isntall and tweak the anim
 
 <hr>
 
-3D Page Effeckts during:
+3D Page Effeckts when menu is opened:
 <br>how is the page transfromed from 2d to 3d
-<br>and
-new page in and old page out when 3d menu is opened
+<br>
+and new page in and old page out
+<br>
+<select ng-model="__curPageTran.ng3dPage" ng-options="val for val in __pageTranSel.ng3dPage"></select>
+<br>
+<button ng-click="openMenuThenChangePage()">Test open menu and change page</button>
 
 <ul>
-	<li ng-repeat="eng3dPage in sel.ng3dPage">{{eng3dPage}}</li>
+	<li ng-repeat="eng3dPage in __pageTranSel.ng3dPage">{{eng3dPage}}</li>
 </ul>
 
 <hr>
 
-2D Page Effeckts during iOS7/Maverics Swipe/Browser Back Button:
+2D Page Effeckts when menu is closed:
+<br> Suitable for iOS7/Maverics EdgeSwipeUX/ Browser Back Button:
+<br>
+<select ng-model="__curPageTran.ng2dPage" ng-options="val for val in __pageTranSel.ng2dPage"></select>
+<br>
+<a href="#/work">Test go to work page</a>
 <ul>
-	<li ng-repeat="each2d in sel.ng2dPage">{{each2d}}</li>
+	<li ng-repeat="each2d in __pageTranSel.ng2dPage">{{each2d}}</li>
 </ul>
 
 

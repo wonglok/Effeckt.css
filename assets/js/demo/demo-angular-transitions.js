@@ -21,7 +21,7 @@ angular
 function($rootScope){
   //omg
 
-  $rootScope.sel = {
+  $rootScope.__pageTranSel = {
     ng3dPage : [
       'effeckt-ng-3d-page-zoom',
       'effeckt-ng-3d-page-flip',
@@ -35,11 +35,12 @@ function($rootScope){
     ]
   };
 
-  $rootScope.cur = {
-    ng3dPage: $rootScope.sel.ng3dPage[0],
-    ng2dPage: $rootScope.sel.ng2dPage[0],
-    ngMenu: $rootScope.sel.ngMenu[0],
+  $rootScope.__curPageTran = {
+    ng3dPage: $rootScope.__pageTranSel.ng3dPage[0],
+    ng2dPage: $rootScope.__pageTranSel.ng2dPage[0],
+    ngMenu: $rootScope.__pageTranSel.ngMenu[0],
   };
+
 
 }])
 
@@ -52,11 +53,15 @@ function($rootScope){
     'Karma'
   ];
 
+  $scope.openMenuThenChangePage = function(){
+    offNavMediator.publish('page:open');
+    setTimeout(function(){
+      window.location.assign('#/work');
+    },1000);
+  };
 
 
-  setTimeout(function(){
-    // offNavMediator.publish('page:open');
-  },1000);
+
 }])
 
 
