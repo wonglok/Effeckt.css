@@ -118,7 +118,9 @@
     })
 
 
-    .directive('effecktNgContainer', function (offNavMediator, _doTransEnd) {
+    .directive('effecktNgContainer', [
+               'offNavMediator', '_doTransEnd',
+      function (offNavMediator, _doTransEnd) {
 
       //from class.ie
       //https://github.com/desandro/classie/blob/master/classie.js
@@ -205,9 +207,11 @@
 
         }
       };
-    })
+    }])
 
-    .directive('effecktNgNavTrigger', function (offNavMediator) {
+    .directive('effecktNgNavTrigger', [
+               'offNavMediator',
+      function (offNavMediator) {
 
       return {
         restrict: 'C',
@@ -220,8 +224,10 @@
 
         }
       };
-    })
-    .directive('effecktNgMenuBtn', function (offNavMediator) {
+    }])
+    .directive('effecktNgMenuBtn', [
+               'offNavMediator',
+      function (offNavMediator) {
 
       return {
         restrict: 'C',
@@ -253,9 +259,11 @@
 
         }
       };
-    })
+    }])
 
-    .directive('effecktNgMenuBtnClose', function (offNavMediator) {
+    .directive('effecktNgMenuBtnClose', [
+               'offNavMediator',
+      function (offNavMediator) {
       return {
         restrict: 'C',
         controller: function ($scope, $element) {
@@ -269,9 +277,10 @@
           });
         }
       };
-    })
+    }])
 
-    .directive('effecktNgNav', function () {
+    .directive('effecktNgNav', [
+      function () {
       function _makeLinkFaster(evt) {
         //delegate
         if(evt.target && evt.target.nodeName === 'A' && evt.target.href && !!!evt.target.attributes.closebtn) {
@@ -289,7 +298,7 @@
           });
         },
       };
-    })
+    }])
     .directive('activeLink', ['$location', function ($location) {
       return {
         //http://jsfiddle.net/p3ZMR/3/

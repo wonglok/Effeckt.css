@@ -17,8 +17,8 @@ angular
       });
   }])
 .run([
-        '$rootScope',
-function($rootScope){
+        '$rootScope','offNavMediator',
+function($rootScope,  offNavMediator){
   //omg
 
   $rootScope.__pageTranSel = {
@@ -27,8 +27,8 @@ function($rootScope){
       'effeckt-ng-3d-page-flip',
     ],
     ng2dPage: [
-      'effeckt-ng-2d-page-preview-move',
-      'effeckt-ng-2d-page-fade'
+      'effeckt-ng-2d-page-fade',
+      'effeckt-ng-2d-page-preview-move'
     ],
     ngMenu: [
       'effeckt-ng-menu-1by1-fade',
@@ -41,12 +41,19 @@ function($rootScope){
     ngMenu: $rootScope.__pageTranSel.ngMenu[0],
   };
 
+  var visited = false;
+  $rootScope.__firstVisit = function(){
+    if(!visited){
+      visited = true;
+      offNavMediator.publish('page:open');
+    }
+  };
 
 }])
 
 .controller('MainCtrl', [
-           '$scope', 'offNavMediator',
-  function ($scope,   offNavMediator) {
+           '$scope', 'offNavMediator', '$rootScope',
+  function ($scope,   offNavMediator,   $rootScope) {
   $scope.awesomeThings = [
     'Main Ctrl',
     'AngularJS',
@@ -65,7 +72,7 @@ function($rootScope){
 
     setTimeout(function(){
       offNavMediator.publish('page:close');
-    },4000);
+    },3500);
   };
 
   $scope.testChangePage = function(){
@@ -75,6 +82,10 @@ function($rootScope){
     },1250);
 
   };
+
+  $rootScope.__firstVisit();
+
+
 
 
 
