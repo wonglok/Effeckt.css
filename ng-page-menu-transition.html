@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Effeckt.css</title>
+
+  <meta name="description" content="UI-Less & Performant Transitions & Animations">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+  <!-- resuable/boilerplate start here >v<~ -->
+  <link href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.css" rel="stylesheet" type="text/css" title="Default Style">
+  <link href="assets/css/modules/ng-page-menu-transitions.css" rel="stylesheet" type="text/css" title="Default Style">
+  <!-- resuable/boilerplate end here >v<~ -->
+
+
+  <!-- your own customization start here @o@ -->
+  <link href="assets/css/demo/demo-angular-transition.css" rel="stylesheet" type="text/css" title="Default Style">
+  <!-- your own customization end here @o@ -->
+
+
+</head>
+
+<body ng-app='yourApp'>
+
+  <!-- resuable/boilerplate start here >v<~ -->
+  <button class="effeckt-ng-menu-btn">Open Sesame</button>
+  <div class="effeckt-ng-container effeckt-ng-3d-page-zoom effeckt-ng-2d-page-fade effeckt-ng-menu-fade-onebyone" easy-effeckt-switch>
+    <div class="effeckt-ng-nav">
+      <div class="effeckt-ng-nav-content">
+        <h2 class="">Menu</h2>
+        <ul>
+          <li><button class="effeckt-ng-menu-btn-close">Close X</button></li>
+          <li><a class="" active-link='active' ng-href="#/">Home</a></li>
+          <li><a class="" active-link='active' ng-href="#/work">Work</a></li>
+        </ul>
+      </div>
+    </div>
+    <div ng-view="" class="effeckt-ng-view"></div>
+  </div>
+  <!-- resuable/boilerplate end here >v<~ -->
+
+  <!-- common lib -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-2.0.3.min.js"><\/script>')</script>
+
+
+  <!-- must include dependent start here *o* -->
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-route.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-animate.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-touch.min.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/modules/ng-page-menu-transition.js"></script>
+  <!-- must include dependent end here *o* -->
+
+
+  <!-- your own customization start here @o@ -->
+  <script src="assets/js/demo/demo-angular-transitions.js"></script>
+  <!-- your own customization end here @o@ -->
+
+
+
+</body>
+
+</html>

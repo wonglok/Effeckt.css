@@ -25,10 +25,12 @@
 
   <nav class="effeckt-off-screen-nav" id="effeckt-off-screen-nav">
 
-  <h4>
-    Navigation
+  <header>
+    <h4>
+      Navigation
+    </h4>
     <a href="#0" id="effeckt-off-screen-nav-close" class="effeckt-off-screen-nav-close">×</a>
-  </h4>
+  </header>
 
   <ul>
     <li><a href="#0">This</a></li>
@@ -40,6 +42,7 @@
   </ul>
 
 </nav>
+
 
   <div class="effeckt-page-transition" id="effeckt-page-transition">
 
@@ -67,7 +70,8 @@
     </div>
   </div>
   <!-- overlay coming after is important for ~ selector -->
-  <div class="effeckt-overlay effeckt-modal-overlay" id="effeckt-modal-overlay"></div>
+  <!-- this is going to be used if there is not javascript involved -->
+  <!-- <div class="effeckt-overlay effeckt-modal-overlay" id="effeckt-modal-overlay"></div> -->
 
 
   <div data-effeckt-page="page-1">
@@ -231,7 +235,7 @@
     </div>
   </div>
 
-  <!-- libs -->
+  <!-- Libs -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/libs/jquery-2.0.3.min.js"><\/script>')</script>
@@ -239,8 +243,8 @@
   <!-- Individual module JS files here -->
   <!-- Should we combine or not combine? -->
   <!-- Should we provide minified versions? -->
-  <script src="assets/js/Effeckt.js"></script>
-  <script src="assets/js/modules/modals.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/modules/modal.js"></script>
   <script src="assets/js/modules/buttons.js"></script>
   <script src="assets/js/modules/list-items.js"></script>
   <script src="assets/js/modules/off-screen-nav.js"></script>
@@ -248,8 +252,9 @@
   <script src="assets/js/modules/list-scroll.js"></script>
   <script src="assets/js/modules/tabs.js"></script>
   <script src="assets/js/modules/positional-modals.js"></script>
+  <script src="assets/js/modules/captions.js"></script>
 
-  <!-- demo -->
+  <!-- Demo JS -->
   <script src="assets/js/demo/demo.js"></script>
 
 </body>

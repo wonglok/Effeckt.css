@@ -1,0 +1,81 @@
+/* ============================================
+MenuStyle
+
+https://github.com/codrops/SidebarTransitions
+Copyright codedrops @ 2014
+Licnese MIT
+
+Rewrite into effeckt.css
+   ============================================ */
+
+.effeckt-ng-nav {
+  cursor: default;
+  background-color: rgba(255, 204, 0, 0.93) !important;
+  background-color: #ffcc00;
+}
+
+.effeckt-ng-nav ul {
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.effeckt-ng-nav h2 {
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  padding: 1em;
+  color: black;
+  font-weight: 200;
+  font-size: x-large;
+  text-align: right;
+  /* outline: red solid 1px; */
+}
+
+.effeckt-ng-nav ul li a,
+.effeckt-ng-nav ul li button {
+  display: block;
+  padding: 1em 1em 1em 1.2em;
+  outline: none;
+  color: black;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 400;
+  text-align: right;
+  text-decoration: none;
+  box-shadow: inset 0 -1px rgba(0, 0, 0, 0.2);
+}
+
+.effeckt-ng-nav ul li button {
+  background: #ffcc00;
+  width: 100%;
+  border: 0px;
+}
+
+.effeckt-ng-nav ul li:first-child * {
+  box-shadow: inset 0 -1px rgba(0, 0, 0, 0.2), inset 0 1px rgba(0, 0, 0, 0.2);
+}
+
+html:not(.touch) .effeckt-ng-nav ul li a:hover,
+.effeckt-ng-nav ul li a.active {
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 -1px rgba(0, 0, 0, 0);
+  color: white;
+}
+
+/* ============================================
+Button Style
+   ============================================ */
+
+.effeckt-ng-menu-btn {
+  width: 180px;
+  border: 0;
+  font-size: x-large;
+  text-align: center;
+  line-height: 59px;
+  border-radius: 0px 0px 0px 10px;
+  background-color: #222222;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #ffcc00;
+  margin: 0px 0px;
+}
