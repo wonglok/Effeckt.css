@@ -32,6 +32,7 @@ function($rootScope,  offNavMediator){
     ],
     ngMenu: [
       'effeckt-ng-menu-1by1-fade',
+      'effeckt-ng-menu-1by1-flip',
     ]
   };
 
