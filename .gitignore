@@ -4,3 +4,5 @@ dist
 node_modules/
 /tmp/
 .DS_Store
+effeckt.sublime-project
+effeckt.sublime-workspace

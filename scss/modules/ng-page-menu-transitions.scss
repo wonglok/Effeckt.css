@@ -1,0 +1,620 @@
+@import "../_variables";
+
+/**
+ * ng-page-menu-transtion.scss 0.1
+ * http://github.wonglok.com/YH
+ *
+ * Rewritten for effeckts project
+ *
+ * Licensed under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ *
+ * Copyright 2014, Wonglok
+ * http://www.yellowhappy.com
+ */
+
+/* ============================================
+Page Structure
+   ============================================ */
+html,
+body,
+[ng-app],
+.effeckt-ng-container,
+.effeckt-ng-view{
+  height: 100%;
+  position: relative;
+}
+
+.effeckt-ng-view{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: 100;
+}
+
+// .effeckt-ng-container{
+//   &.effeckt-ng-lock-scroll{
+//     overflow: hidden;
+//   }
+//   &.effeckt-ng-lock-scroll .effeckt-ng-view{
+//     overflow: hidden;
+//   }
+// }
+
+/* ============================================
+Page 3D Effeckt - zoom (best for android)
+   ============================================ */
+.effeckt-ng-3d-page-zoom{
+  perspective: 1500px;
+
+  &.effeckt-ng-open-menu{
+    overflow: hidden;
+  }
+  &.effeckt-ng-open-menu .effeckt-ng-view{
+    overflow: hidden;
+  }
+
+
+  & .effeckt-ng-view{
+    transform-origin: 100% 50%;
+    // will-change: opacity, transform;
+  }
+
+  //closed
+  @mixin effeckt-ng-2d-page-resting{
+    //dont hog resource of entire page when the page is closed.
+    transform: none;
+    opacity: 1;
+  }
+
+  @mixin optimize-will-change{
+    will-change: opacity, transform;
+  }
+
+  //when menu is opened
+  @mixin effeckt-ng-3d-page-before-come-in{
+    //is going to use animation dealy
+    transform: rotateY(-30deg) scale(0.7);
+    opacity: 0;
+  }
+  @mixin effeckt-ng-3d-page-resting{
+    //prepare for page comming, page leaving, page-close animation.
+    transform: rotateY(-30deg);
+    opacity: 0.5;
+  }
+  @mixin effeckt-ng-3d-page-left{
+    transform: rotateY(-30deg) scale(1.3);
+    opacity: 0;
+  }
+
+  /* ============================================
+  3D page transition upon open and close menu
+  ============================================ */
+  &:not(.effeckt-ng-open-menu){
+    & .effeckt-ng-view{
+      @include effeckt-ng-2d-page-resting();
+      //wait for 0.2s for will-change to do prep work.
+      transition: all cubic-bezier(0.09, 0.68, 0, 0.99) 0.5s 0.2s;
+    }
+  }
+  //page when 3d menu opened;
+  &.effeckt-ng-open-menu{
+    & .effeckt-ng-view{
+      @include effeckt-ng-3d-page-resting();
+      //wait for 0.2s for will-change to do prep work.
+      transition: all cubic-bezier(0.09, 0.68, 0, 0.99) 1s 0.2s;
+    }
+  }
+
+  /* ============================================
+  3D page transition in and out of the app when 3D menu is opened.
+  ============================================ */
+  &.effeckt-ng-open-menu{
+    //timig, first leave old page
+    & .effeckt-ng-view.ng-leave,
+    & .effeckt-ng-view.ng-leave.ng-leave-active{
+      transition: all 0.5s 0.1s;
+    }
+
+    //timig, then enter new page
+    & .effeckt-ng-view.ng-enter,
+    & .effeckt-ng-view.ng-enter.ng-enter-active{
+      transition: all 0.5s 0.6s;
+    }
+
+    //before come in
+    & .effeckt-ng-view.ng-enter{
+      @include effeckt-ng-3d-page-before-come-in();
+    }
+    & .effeckt-ng-view.ng-enter.ng-enter-active, //coming in
+    & .effeckt-ng-view.ng-leave, //before leave
+    & .effeckt-ng-view{ //alreay here
+      @include effeckt-ng-3d-page-resting();
+    }
+
+    //leaving
+    & .effeckt-ng-view.ng-leave.ng-leave-active {
+      @include effeckt-ng-3d-page-left();
+    }
+
+  }//end 3d page trans
+
+}//end container
+
+
+/* ============================================
+Page 3D Effeckt - flip (best for ios/desktop)
+   ============================================ */
+.effeckt-ng-3d-page-flip{
+  perspective: 1500px;
+
+  &.effeckt-ng-open-menu{
+    overflow: hidden;
+  }
+  &.effeckt-ng-open-menu .effeckt-ng-view{
+    overflow: hidden;
+  }
+
+
+  & .effeckt-ng-view{
+    transform-origin: 100% 50%;
+    // will-change: opacity, transform;
+  }
+
+  //closed
+  @mixin effeckt-ng-2d-page-resting{
+    //dont hog resource of entire page when the page is closed.
+    transform: none;
+    opacity: 1;
+  }
+
+  @mixin optimize-will-change{
+    will-change: opacity, transform;
+  }
+
+  //when menu is opened
+  @mixin effeckt-ng-3d-page-before-come-in{
+    //is going to use animation dealy
+    transform: translateY(-50%) rotateY(-30deg) rotateX(15deg);
+    opacity: 0;
+  }
+  @mixin effeckt-ng-3d-page-resting{
+    //prepare for page comming, page leaving, page-close animation.
+    transform: rotateY(-30deg);
+    opacity: 0.5;
+  }
+  @mixin effeckt-ng-3d-page-left{
+    transform: translateY(50%) rotateY(-30deg) rotateX(-15deg);
+    opacity: 0;
+  }
+
+
+
+  /* ============================================
+  3D page transition upon open and close menu
+  ============================================ */
+  &:not(.effeckt-ng-open-menu){
+    & .effeckt-ng-view{
+      @include effeckt-ng-2d-page-resting();
+      //wait for 0.2s for will-change to do prep work.
+      transition: all cubic-bezier(0.09, 0.68, 0, 0.99) 0.5s 0.2s;
+    }
+  }
+  //page when 3d menu opened;
+  &.effeckt-ng-open-menu{
+    & .effeckt-ng-view{
+      @include effeckt-ng-3d-page-resting();
+      //wait for 0.2s for will-change to do prep work.
+      transition: all cubic-bezier(0.09, 0.68, 0, 0.99) 1s 0.2s;
+    }
+  }
+
+  /* ============================================
+  3D page transition in and out of the app when 3D menu is opened.
+  ============================================ */
+  &.effeckt-ng-open-menu{
+    //timig, first leave old page
+    & .effeckt-ng-view.ng-leave,
+    & .effeckt-ng-view.ng-leave.ng-leave-active{
+      transition: all 0.5s 0.1s;
+    }
+
+    //timig, then enter new page
+    & .effeckt-ng-view.ng-enter,
+    & .effeckt-ng-view.ng-enter.ng-enter-active{
+      transition: all 0.5s 0.6s;
+    }
+
+    //before come in
+    & .effeckt-ng-view.ng-enter{
+      @include effeckt-ng-3d-page-before-come-in();
+    }
+    & .effeckt-ng-view.ng-enter.ng-enter-active, //coming in
+    & .effeckt-ng-view.ng-leave, //before leave
+    & .effeckt-ng-view{ //alreay here
+      @include effeckt-ng-3d-page-resting();
+    }
+
+    //leaving
+    & .effeckt-ng-view.ng-leave.ng-leave-active {
+      @include effeckt-ng-3d-page-left();
+    }
+
+  }//end 3d page trans
+
+}//end container
+
+
+/* ============================================
+Page 3D Effeckt - flip (best for ios/desktop)
+   ============================================ */
+.effeckt-ng-3d-page-flip{
+  perspective: 1500px;
+
+  &.effeckt-ng-open-menu{
+    overflow: hidden;
+  }
+  &.effeckt-ng-open-menu .effeckt-ng-view{
+    overflow: hidden;
+  }
+
+
+  & .effeckt-ng-view{
+    transform-origin: 100% 50%;
+    // will-change: opacity, transform;
+  }
+
+  //closed
+  @mixin effeckt-ng-2d-page-resting{
+    //dont hog resource of entire page when the page is closed.
+    transform: none;
+    opacity: 1;
+  }
+
+  @mixin optimize-will-change{
+    will-change: opacity, transform;
+  }
+
+  //when menu is opened
+  @mixin effeckt-ng-3d-page-before-come-in{
+    //is going to use animation dealy
+    transform: translateY(-50%) rotateY(-30deg) rotateX(15deg);
+    opacity: 0;
+  }
+  @mixin effeckt-ng-3d-page-resting{
+    //prepare for page comming, page leaving, page-close animation.
+    transform: rotateY(-30deg);
+    opacity: 0.5;
+  }
+  @mixin effeckt-ng-3d-page-left{
+    transform: translateY(50%) rotateY(-30deg) rotateX(-15deg);
+    opacity: 0;
+  }
+
+
+
+  /* ============================================
+  3D page transition upon open and close menu
+  ============================================ */
+  &:not(.effeckt-ng-open-menu){
+    & .effeckt-ng-view{
+      @include effeckt-ng-2d-page-resting();
+      //wait for 0.2s for will-change to do prep work.
+      transition: all cubic-bezier(0.09, 0.68, 0, 0.99) 0.5s 0.2s;
+    }
+  }
+  //page when 3d menu opened;
+  &.effeckt-ng-open-menu{
+    & .effeckt-ng-view{
+      @include effeckt-ng-3d-page-resting();
+      //wait for 0.2s for will-change to do prep work.
+      transition: all cubic-bezier(0.09, 0.68, 0, 0.99) 1s 0.2s;
+    }
+  }
+
+  /* ============================================
+  3D page transition in and out of the app when 3D menu is opened.
+  ============================================ */
+  &.effeckt-ng-open-menu{
+    //timig, first leave old page
+    & .effeckt-ng-view.ng-leave,
+    & .effeckt-ng-view.ng-leave.ng-leave-active{
+      transition: all 0.5s 0.1s;
+    }
+
+    //timig, then enter new page
+    & .effeckt-ng-view.ng-enter,
+    & .effeckt-ng-view.ng-enter.ng-enter-active{
+      transition: all 0.5s 0.6s;
+    }
+
+    //before come in
+    & .effeckt-ng-view.ng-enter{
+      @include effeckt-ng-3d-page-before-come-in();
+    }
+    & .effeckt-ng-view.ng-enter.ng-enter-active, //coming in
+    & .effeckt-ng-view.ng-leave, //before leave
+    & .effeckt-ng-view{ //alreay here
+      @include effeckt-ng-3d-page-resting();
+    }
+
+    //leaving
+    & .effeckt-ng-view.ng-leave.ng-leave-active {
+      @include effeckt-ng-3d-page-left();
+    }
+
+  }//end 3d page trans
+
+}//end container
+
+
+//this is only for 2d (i.e. menu closed)
+.effeckt-ng-2d-page-fade{
+  /* ============================================
+  2D page transition when menu is closed
+  ============================================ */
+  &:not(.effeckt-ng-open-menu){
+    //timig, first leave old page
+    //wait for 0.1s for will-change to do prep work.
+    & .effeckt-ng-view.ng-leave,
+    & .effeckt-ng-view.ng-leave.ng-leave-active{
+      transition: all 0.5s 0.1s;
+    }
+    //timig, then enter new page
+    & .effeckt-ng-view.ng-enter,
+    & .effeckt-ng-view.ng-enter.ng-enter-active{
+      transition: all 0.5s 0.6s;
+    }
+
+    & .effeckt-ng-view.ng-enter{//before come in
+      opacity: 0;
+      transform: translate3d(-2%,0,0);
+    }
+    & .effeckt-ng-view.ng-enter.ng-enter-active, //coming in
+    & .effeckt-ng-view.ng-leave, //before leave
+    & .effeckt-ng-view{ //alreay here
+      opacity: 1;
+      transform: none;
+    }
+    & .effeckt-ng-view.ng-leave.ng-leave-active {//leaving
+      opacity: 0;
+      transform: translate3d(2%,0,0);
+    }
+
+  }//end page trans
+}
+
+.effeckt-ng-2d-page-preview-move{
+  /* ============================================
+  2D page transition when menu is closed
+  ============================================ */
+  &:not(.effeckt-ng-open-menu){
+    //timig, first leave old page
+    //wait for 0.1s for will-change to do prep work.
+    & .effeckt-ng-view.ng-leave,
+    & .effeckt-ng-view.ng-leave.ng-leave-active{
+      transition: all 0.2s 0.1s;
+    }
+    //timig, then enter new page
+    & .effeckt-ng-view.ng-enter,
+    & .effeckt-ng-view.ng-enter.ng-enter-active{
+      transition: all 0.75s 0.3s;
+    }
+
+    & .effeckt-ng-view.ng-enter{//before come in
+      transform: translate3d(0,-150%,0);
+      opacity: 0;
+    }
+    & .effeckt-ng-view.ng-enter.ng-enter-active, //coming in
+    & .effeckt-ng-view.ng-leave, //before leave
+    & .effeckt-ng-view{ //alreay here
+      opacity: 1;
+      transform: none;
+    }
+    & .effeckt-ng-view.ng-leave.ng-leave-active {//leaving
+      opacity: 0;
+    }
+
+  }//end page trans
+}
+
+
+.effeckt-ng-menu-1by1-fade{
+  /* ============================================
+  Menu Fade In
+  ============================================ */
+  & .effeckt-ng-nav{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 400;
+
+    width: 240px;
+    height: 100%;
+
+    will-change: opacity, transform;
+  }
+
+  //closed
+  &:not(.effeckt-ng-open-menu){
+    & .effeckt-ng-nav{
+      transition: opacity 0.5s, transform 0s 0.5s;
+      opacity: 0;
+      transform: translate3d(-100%,0,0);
+    }
+  }
+
+  //opened state
+  &.effeckt-ng-open-menu{
+    & .effeckt-ng-nav{
+      //wati for the page to go 3d, then enter the menu
+      transition: opacity 0.5s 0.75s;
+      opacity: 0.85;
+      transform: translate3d(0,0,0);
+    }
+  }
+
+  /* ============================================
+    stagerring effect
+    list item slide in one by one :)
+   ============================================ */
+  & .effeckt-ng-nav{
+    & h2,
+    & ul li{
+      will-change: transform, opacity;
+    }
+  }
+  //closed
+  &:not(.effeckt-ng-open-menu){
+    & .effeckt-ng-nav{
+      & h2,
+      & ul li{
+        transition: transform 0s, opacity 0s;
+        transform: translate3d(-50px,0,0);
+        opacity: 0;
+      }
+    }
+  }
+
+  //opened
+  &.effeckt-ng-open-menu{
+    & .effeckt-ng-nav{
+      & h2,
+      & ul li{
+        transition: transform 0.5s, opacity  1s;
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+      h2 {
+        transition-delay: 1.25s;
+      }
+
+      @for $i from 1 through $effeckt-off-screen-navigation-list-item-amount {
+        li:nth-child(#{$i}) {
+          transition-delay: 1.25s + $i * 0.10;
+        }
+      }//staggering
+
+    }//nav
+
+  }//opened
+
+}//end 3d-flip
+
+
+.effeckt-ng-menu-1by1-flip{
+  /* ============================================
+  Menu Fade In
+  ============================================ */
+  & .effeckt-ng-nav{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 400;
+
+    width: 240px;
+    height: 100%;
+
+    will-change: opacity, transform;
+  }
+
+  //closed
+  &:not(.effeckt-ng-open-menu){
+    & .effeckt-ng-nav{
+      transition: opacity 0.5s, transform 0s 0.5s;
+      opacity: 0;
+      transform: translate3d(-100%,0,0);
+    }
+  }
+
+  //opened state
+  &.effeckt-ng-open-menu{
+    & .effeckt-ng-nav{
+      //wati for the page to go 3d, then enter the menu
+      transition: opacity 0.5s 0.75s;
+      opacity: 0.85;
+      transform: translate3d(0,0,0);
+    }
+  }
+
+  /* ============================================
+    stagerring effect
+    list item slide in one by one :)
+   ============================================ */
+  & .effeckt-ng-nav{
+    & h2,
+    & ul li{
+      perspective: 500px;
+      will-change: transform, opacity;
+    }
+  }
+  //closed
+  &:not(.effeckt-ng-open-menu){
+    & .effeckt-ng-nav{
+      & h2,
+      & ul li{
+        transition: transform 0s, opacity 0s;
+        transform: rotateY(3deg) translate3d(-50px,0,0);
+        opacity: 0;
+      }
+    }
+  }
+
+  //opened
+  &.effeckt-ng-open-menu{
+    & .effeckt-ng-nav{
+      & h2,
+      & ul li{
+        transition: transform 0.5s, opacity  1s;
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+      h2 {
+        transition-delay: 1.25s;
+      }
+
+      @for $i from 1 through $effeckt-off-screen-navigation-list-item-amount {
+        li:nth-child(#{$i}) {
+          transition-delay: 1.25s + $i * 0.10;
+        }
+      }//staggering
+
+    }//nav
+
+  }//opened
+
+}//end 3d-flip
+
+
+
+/* ============================================
+Button Fade in out
+   ============================================ */
+.effeckt-ng-menu-btn{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 500;
+
+  will-change: opacity, transform;
+  transition: opacity 1s 0.15s, transform 1s 0.15s;
+
+  opacity: 1;
+  transform: translate3d(0,0,0);
+
+  &.effeckt-ng-open-menu{
+    transition: opacity 0.3s, transform 1s 0s;
+
+    opacity: 0;
+    transform: translate3d(0,-200px,0);
+
+  }//opened
+
+}//menu btn
+
+
+
+
+

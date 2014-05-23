@@ -26,6 +26,10 @@ module.exports = function(grunt) {
     },
 
     watch: {
+      angular: {
+        files: ['src/angular/**/*.*'],
+        tasks: 'copy:angular'
+      },
       scss: {
         files: ['scss/**/*.scss'],
         tasks: 'scss'
@@ -89,7 +93,7 @@ module.exports = function(grunt) {
         options: {
           port: 9001,
           protocol: 'http',
-          hostname: 'localhost',
+          hostname: '0.0.0.0',//for viewing on iOS.
           base: './dist/',  // '.' operates from the root of your Gruntfile, otherwise -> 'Users/user-name/www-directory/website-directory'
           keepalive: false, // set to false to work side by side w/watch task.
           livereload: true,
@@ -117,12 +121,20 @@ module.exports = function(grunt) {
     },
 
     copy: {
+
+      angular: {
+        files: [
+          { expand: true, cwd: './src/angular', src: ['./**/*.*'], dest: 'dist/' }
+        ]
+      },
+
       demo: {
         files: [
           { expand: true, cwd: './css', src: ['./**/*.*'], dest: 'dist/assets/css' },
           { expand: true, cwd: './js', src: ['./**/*.*'], dest: 'dist/assets/js' }
         ]
       },
+
       css: {
         files: [
           { expand: true, cwd: './css', src: ['./**/*.*'], dest: 'dist/assets/css' }
@@ -134,6 +146,8 @@ module.exports = function(grunt) {
         ]
       }
     },
+
+
 
     concat: {
       options: {
@@ -151,7 +165,10 @@ module.exports = function(grunt) {
           'js/modules/off-screen-nav.js',
           'js/modules/page-transition.js',
           'js/modules/positional-modals.js',
-          'js/modules/tabs.js'
+          'js/modules/tabs.js',
+
+          'js/modules/ng-page-menu-transition.js',
+
         ],
         dest: 'dist/assets/js/<%= pkg.name %>.js'
       }

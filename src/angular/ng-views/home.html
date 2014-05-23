@@ -1,0 +1,69 @@
+<div>
+	<p>
+		Plug and play performant Angular page transition that is optimized with will-change.
+		<br>
+		Page-transition effeckt is Responsive/Adaptive to different devices.
+		<br>
+		Easy install, easy to re-code as you want becuase of inline document in scss. @v@
+		<br>
+		Still work in progress. :)
+		<br>
+		When finished, there's will be a tutorial about how to isntall and tweak the animation.
+
+	</p>
+	<hr>
+	<p>
+		<h3>
+			Class add to effeckt-ng-container div, responsible for different effeckt
+		</h3>
+		<h5>
+			For effeckts that needs offnav menu.
+		</h5>
+
+	</p>
+
+	<hr>
+
+	<p>
+		3D Page Effeckts when menu is opened:
+		<br>
+		how is the page/menu transfromed from 2d to 3d scene
+		<br>
+		and new page in and old page out
+		<br>
+		<select ng-model="__curPageTran.ng3dPage" ng-options="val for val in __pageTranSel.ng3dPage"></select>
+		<br>
+		<button ng-click="openMenuThenChangePage()">Doge Wizard  change page in 3d mode</button>
+
+		<ul>
+			<li ng-repeat="eng3dPage in __pageTranSel.ng3dPage">{{eng3dPage}}</li>
+		</ul>
+	</p>
+
+	<hr>
+	<p>
+		2D Page Effeckts when menu is closed:
+		<br>
+		Suitable for iOS7/Maverics EdgeSwipeUX/ Browser Back Button:
+		<br>
+		<select ng-model="__curPageTran.ng2dPage" ng-options="val for val in __pageTranSel.ng2dPage"></select>
+		<br>
+
+		<button ng-click="testChangePage()">Doge Wizard change page in 2d mode</button>
+		<ul>
+			<li ng-repeat="each2d in __pageTranSel.ng2dPage">{{each2d}}</li>
+		</ul>
+	</p>
+
+	<hr>
+	<p>
+		<h3>
+			Class add to effeckt-ng-container div, responsible for different effeckt
+		</h3>
+		<h5>
+			For effeckts does not need offnav menu.
+		</h5>
+	</p>
+</div>
+
+

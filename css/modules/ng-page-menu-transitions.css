@@ -1,0 +1,781 @@
+/**
+ * ng-page-menu-transtion.scss 0.1
+ * http://github.wonglok.com/YH
+ *
+ * Rewritten for effeckts project
+ *
+ * Licensed under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ *
+ * Copyright 2014, Wonglok
+ * http://www.yellowhappy.com
+ */
+
+/* ============================================
+Page Structure
+   ============================================ */
+
+html,
+body,
+[ng-app],
+.effeckt-ng-container,
+.effeckt-ng-view {
+  height: 100%;
+  position: relative;
+}
+
+.effeckt-ng-view {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: 100;
+}
+
+/* ============================================
+Page 3D Effeckt - zoom (best for android)
+   ============================================ */
+
+.effeckt-ng-3d-page-zoom {
+  -webkit-perspective: 1500px;
+  -ms-perspective: 1500px;
+  -o-perspective: 1500px;
+  perspective: 1500px;
+  /* ============================================
+  3D page transition upon open and close menu
+  ============================================ */
+  /* ============================================
+  3D page transition in and out of the app when 3D menu is opened.
+  ============================================ */
+}
+
+.effeckt-ng-3d-page-zoom.effeckt-ng-open-menu {
+  overflow: hidden;
+}
+
+.effeckt-ng-3d-page-zoom.effeckt-ng-open-menu .effeckt-ng-view {
+  overflow: hidden;
+}
+
+.effeckt-ng-3d-page-zoom .effeckt-ng-view {
+  -webkit-transform-origin: 100% 50%;
+  -ms-transform-origin: 100% 50%;
+  -o-transform-origin: 100% 50%;
+  transform-origin: 100% 50%;
+}
+
+.effeckt-ng-3d-page-zoom:not(.effeckt-ng-open-menu) .effeckt-ng-view {
+  -webkit-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none;
+  opacity: 1;
+  -webkit-transition: all cubic-bezier(0.09, 0.68, 0, 0.99) 0.5s 0.2s;
+  -o-transition: all cubic-bezier(0.09, 0.68, 0, 0.99) 0.5s 0.2s;
+  transition: all cubic-bezier(0.09, 0.68, 0, 0.99) 0.5s 0.2s;
+}
+
+.effeckt-ng-3d-page-zoom.effeckt-ng-open-menu .effeckt-ng-view {
+  -webkit-transform: rotateY(-30deg);
+  -ms-transform: rotateY(-30deg);
+  -o-transform: rotateY(-30deg);
+  transform: rotateY(-30deg);
+  opacity: 0.5;
+  -webkit-transition: all cubic-bezier(0.09, 0.68, 0, 0.99) 1s 0.2s;
+  -o-transition: all cubic-bezier(0.09, 0.68, 0, 0.99) 1s 0.2s;
+  transition: all cubic-bezier(0.09, 0.68, 0, 0.99) 1s 0.2s;
+}
+
+.effeckt-ng-3d-page-zoom.effeckt-ng-open-menu .effeckt-ng-view.ng-leave,
+.effeckt-ng-3d-page-zoom.effeckt-ng-open-menu .effeckt-ng-view.ng-leave.ng-leave-active {
+  -webkit-transition: all 0.5s 0.1s;
+  -o-transition: all 0.5s 0.1s;
+  transition: all 0.5s 0.1s;
+}
+
+.effeckt-ng-3d-page-zoom.effeckt-ng-open-menu .effeckt-ng-view.ng-enter,
+.effeckt-ng-3d-page-zoom.effeckt-ng-open-menu .effeckt-ng-view.ng-enter.ng-enter-active {
+  -webkit-transition: all 0.5s 0.6s;
+  -o-transition: all 0.5s 0.6s;
+  transition: all 0.5s 0.6s;
+}
+
+.effeckt-ng-3d-page-zoom.effeckt-ng-open-menu .effeckt-ng-view.ng-enter {
+  -webkit-transform: rotateY(-30deg) scale(0.7);
+  -ms-transform: rotateY(-30deg) scale(0.7);
+  -o-transform: rotateY(-30deg) scale(0.7);
+  transform: rotateY(-30deg) scale(0.7);
+  opacity: 0;
+}
+
+.effeckt-ng-3d-page-zoom.effeckt-ng-open-menu .effeckt-ng-view.ng-enter.ng-enter-active,
+.effeckt-ng-3d-page-zoom.effeckt-ng-open-menu .effeckt-ng-view.ng-leave,
+.effeckt-ng-3d-page-zoom.effeckt-ng-open-menu .effeckt-ng-view {
+  -webkit-transform: rotateY(-30deg);
+  -ms-transform: rotateY(-30deg);
+  -o-transform: rotateY(-30deg);
+  transform: rotateY(-30deg);
+  opacity: 0.5;
+}
+
+.effeckt-ng-3d-page-zoom.effeckt-ng-open-menu .effeckt-ng-view.ng-leave.ng-leave-active {
+  -webkit-transform: rotateY(-30deg) scale(1.3);
+  -ms-transform: rotateY(-30deg) scale(1.3);
+  -o-transform: rotateY(-30deg) scale(1.3);
+  transform: rotateY(-30deg) scale(1.3);
+  opacity: 0;
+}
+
+/* ============================================
+Page 3D Effeckt - flip (best for ios/desktop)
+   ============================================ */
+
+.effeckt-ng-3d-page-flip {
+  -webkit-perspective: 1500px;
+  -ms-perspective: 1500px;
+  -o-perspective: 1500px;
+  perspective: 1500px;
+  /* ============================================
+  3D page transition upon open and close menu
+  ============================================ */
+  /* ============================================
+  3D page transition in and out of the app when 3D menu is opened.
+  ============================================ */
+}
+
+.effeckt-ng-3d-page-flip.effeckt-ng-open-menu {
+  overflow: hidden;
+}
+
+.effeckt-ng-3d-page-flip.effeckt-ng-open-menu .effeckt-ng-view {
+  overflow: hidden;
+}
+
+.effeckt-ng-3d-page-flip .effeckt-ng-view {
+  -webkit-transform-origin: 100% 50%;
+  -ms-transform-origin: 100% 50%;
+  -o-transform-origin: 100% 50%;
+  transform-origin: 100% 50%;
+}
+
+.effeckt-ng-3d-page-flip:not(.effeckt-ng-open-menu) .effeckt-ng-view {
+  -webkit-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none;
+  opacity: 1;
+  -webkit-transition: all cubic-bezier(0.09, 0.68, 0, 0.99) 0.5s 0.2s;
+  -o-transition: all cubic-bezier(0.09, 0.68, 0, 0.99) 0.5s 0.2s;
+  transition: all cubic-bezier(0.09, 0.68, 0, 0.99) 0.5s 0.2s;
+}
+
+.effeckt-ng-3d-page-flip.effeckt-ng-open-menu .effeckt-ng-view {
+  -webkit-transform: rotateY(-30deg);
+  -ms-transform: rotateY(-30deg);
+  -o-transform: rotateY(-30deg);
+  transform: rotateY(-30deg);
+  opacity: 0.5;
+  -webkit-transition: all cubic-bezier(0.09, 0.68, 0, 0.99) 1s 0.2s;
+  -o-transition: all cubic-bezier(0.09, 0.68, 0, 0.99) 1s 0.2s;
+  transition: all cubic-bezier(0.09, 0.68, 0, 0.99) 1s 0.2s;
+}
+
+.effeckt-ng-3d-page-flip.effeckt-ng-open-menu .effeckt-ng-view.ng-leave,
+.effeckt-ng-3d-page-flip.effeckt-ng-open-menu .effeckt-ng-view.ng-leave.ng-leave-active {
+  -webkit-transition: all 0.5s 0.1s;
+  -o-transition: all 0.5s 0.1s;
+  transition: all 0.5s 0.1s;
+}
+
+.effeckt-ng-3d-page-flip.effeckt-ng-open-menu .effeckt-ng-view.ng-enter,
+.effeckt-ng-3d-page-flip.effeckt-ng-open-menu .effeckt-ng-view.ng-enter.ng-enter-active {
+  -webkit-transition: all 0.5s 0.6s;
+  -o-transition: all 0.5s 0.6s;
+  transition: all 0.5s 0.6s;
+}
+
+.effeckt-ng-3d-page-flip.effeckt-ng-open-menu .effeckt-ng-view.ng-enter {
+  -webkit-transform: translateY(-50%) rotateY(-30deg) rotateX(15deg);
+  -ms-transform: translateY(-50%) rotateY(-30deg) rotateX(15deg);
+  -o-transform: translateY(-50%) rotateY(-30deg) rotateX(15deg);
+  transform: translateY(-50%) rotateY(-30deg) rotateX(15deg);
+  opacity: 0;
+}
+
+.effeckt-ng-3d-page-flip.effeckt-ng-open-menu .effeckt-ng-view.ng-enter.ng-enter-active,
+.effeckt-ng-3d-page-flip.effeckt-ng-open-menu .effeckt-ng-view.ng-leave,
+.effeckt-ng-3d-page-flip.effeckt-ng-open-menu .effeckt-ng-view {
+  -webkit-transform: rotateY(-30deg);
+  -ms-transform: rotateY(-30deg);
+  -o-transform: rotateY(-30deg);
+  transform: rotateY(-30deg);
+  opacity: 0.5;
+}
+
+.effeckt-ng-3d-page-flip.effeckt-ng-open-menu .effeckt-ng-view.ng-leave.ng-leave-active {
+  -webkit-transform: translateY(50%) rotateY(-30deg) rotateX(-15deg);
+  -ms-transform: translateY(50%) rotateY(-30deg) rotateX(-15deg);
+  -o-transform: translateY(50%) rotateY(-30deg) rotateX(-15deg);
+  transform: translateY(50%) rotateY(-30deg) rotateX(-15deg);
+  opacity: 0;
+}
+
+/* ============================================
+Page 3D Effeckt - flip (best for ios/desktop)
+   ============================================ */
+
+.effeckt-ng-3d-page-flip {
+  -webkit-perspective: 1500px;
+  -ms-perspective: 1500px;
+  -o-perspective: 1500px;
+  perspective: 1500px;
+  /* ============================================
+  3D page transition upon open and close menu
+  ============================================ */
+  /* ============================================
+  3D page transition in and out of the app when 3D menu is opened.
+  ============================================ */
+}
+
+.effeckt-ng-3d-page-flip.effeckt-ng-open-menu {
+  overflow: hidden;
+}
+
+.effeckt-ng-3d-page-flip.effeckt-ng-open-menu .effeckt-ng-view {
+  overflow: hidden;
+}
+
+.effeckt-ng-3d-page-flip .effeckt-ng-view {
+  -webkit-transform-origin: 100% 50%;
+  -ms-transform-origin: 100% 50%;
+  -o-transform-origin: 100% 50%;
+  transform-origin: 100% 50%;
+}
+
+.effeckt-ng-3d-page-flip:not(.effeckt-ng-open-menu) .effeckt-ng-view {
+  -webkit-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none;
+  opacity: 1;
+  -webkit-transition: all cubic-bezier(0.09, 0.68, 0, 0.99) 0.5s 0.2s;
+  -o-transition: all cubic-bezier(0.09, 0.68, 0, 0.99) 0.5s 0.2s;
+  transition: all cubic-bezier(0.09, 0.68, 0, 0.99) 0.5s 0.2s;
+}
+
+.effeckt-ng-3d-page-flip.effeckt-ng-open-menu .effeckt-ng-view {
+  -webkit-transform: rotateY(-30deg);
+  -ms-transform: rotateY(-30deg);
+  -o-transform: rotateY(-30deg);
+  transform: rotateY(-30deg);
+  opacity: 0.5;
+  -webkit-transition: all cubic-bezier(0.09, 0.68, 0, 0.99) 1s 0.2s;
+  -o-transition: all cubic-bezier(0.09, 0.68, 0, 0.99) 1s 0.2s;
+  transition: all cubic-bezier(0.09, 0.68, 0, 0.99) 1s 0.2s;
+}
+
+.effeckt-ng-3d-page-flip.effeckt-ng-open-menu .effeckt-ng-view.ng-leave,
+.effeckt-ng-3d-page-flip.effeckt-ng-open-menu .effeckt-ng-view.ng-leave.ng-leave-active {
+  -webkit-transition: all 0.5s 0.1s;
+  -o-transition: all 0.5s 0.1s;
+  transition: all 0.5s 0.1s;
+}
+
+.effeckt-ng-3d-page-flip.effeckt-ng-open-menu .effeckt-ng-view.ng-enter,
+.effeckt-ng-3d-page-flip.effeckt-ng-open-menu .effeckt-ng-view.ng-enter.ng-enter-active {
+  -webkit-transition: all 0.5s 0.6s;
+  -o-transition: all 0.5s 0.6s;
+  transition: all 0.5s 0.6s;
+}
+
+.effeckt-ng-3d-page-flip.effeckt-ng-open-menu .effeckt-ng-view.ng-enter {
+  -webkit-transform: translateY(-50%) rotateY(-30deg) rotateX(15deg);
+  -ms-transform: translateY(-50%) rotateY(-30deg) rotateX(15deg);
+  -o-transform: translateY(-50%) rotateY(-30deg) rotateX(15deg);
+  transform: translateY(-50%) rotateY(-30deg) rotateX(15deg);
+  opacity: 0;
+}
+
+.effeckt-ng-3d-page-flip.effeckt-ng-open-menu .effeckt-ng-view.ng-enter.ng-enter-active,
+.effeckt-ng-3d-page-flip.effeckt-ng-open-menu .effeckt-ng-view.ng-leave,
+.effeckt-ng-3d-page-flip.effeckt-ng-open-menu .effeckt-ng-view {
+  -webkit-transform: rotateY(-30deg);
+  -ms-transform: rotateY(-30deg);
+  -o-transform: rotateY(-30deg);
+  transform: rotateY(-30deg);
+  opacity: 0.5;
+}
+
+.effeckt-ng-3d-page-flip.effeckt-ng-open-menu .effeckt-ng-view.ng-leave.ng-leave-active {
+  -webkit-transform: translateY(50%) rotateY(-30deg) rotateX(-15deg);
+  -ms-transform: translateY(50%) rotateY(-30deg) rotateX(-15deg);
+  -o-transform: translateY(50%) rotateY(-30deg) rotateX(-15deg);
+  transform: translateY(50%) rotateY(-30deg) rotateX(-15deg);
+  opacity: 0;
+}
+
+.effeckt-ng-2d-page-fade {
+  /* ============================================
+  2D page transition when menu is closed
+  ============================================ */
+}
+
+.effeckt-ng-2d-page-fade:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-leave,
+.effeckt-ng-2d-page-fade:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-leave.ng-leave-active {
+  -webkit-transition: all 0.5s 0.1s;
+  -o-transition: all 0.5s 0.1s;
+  transition: all 0.5s 0.1s;
+}
+
+.effeckt-ng-2d-page-fade:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-enter,
+.effeckt-ng-2d-page-fade:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-enter.ng-enter-active {
+  -webkit-transition: all 0.5s 0.6s;
+  -o-transition: all 0.5s 0.6s;
+  transition: all 0.5s 0.6s;
+}
+
+.effeckt-ng-2d-page-fade:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-enter {
+  opacity: 0;
+  -webkit-transform: translate3d(-2%, 0, 0);
+  -ms-transform: translate3d(-2%, 0, 0);
+  -o-transform: translate3d(-2%, 0, 0);
+  transform: translate3d(-2%, 0, 0);
+}
+
+.effeckt-ng-2d-page-fade:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-enter.ng-enter-active,
+.effeckt-ng-2d-page-fade:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-leave,
+.effeckt-ng-2d-page-fade:not(.effeckt-ng-open-menu) .effeckt-ng-view {
+  opacity: 1;
+  -webkit-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none;
+}
+
+.effeckt-ng-2d-page-fade:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-leave.ng-leave-active {
+  opacity: 0;
+  -webkit-transform: translate3d(2%, 0, 0);
+  -ms-transform: translate3d(2%, 0, 0);
+  -o-transform: translate3d(2%, 0, 0);
+  transform: translate3d(2%, 0, 0);
+}
+
+.effeckt-ng-2d-page-preview-move {
+  /* ============================================
+  2D page transition when menu is closed
+  ============================================ */
+}
+
+.effeckt-ng-2d-page-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-leave,
+.effeckt-ng-2d-page-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-leave.ng-leave-active {
+  -webkit-transition: all 0.2s 0.1s;
+  -o-transition: all 0.2s 0.1s;
+  transition: all 0.2s 0.1s;
+}
+
+.effeckt-ng-2d-page-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-enter,
+.effeckt-ng-2d-page-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-enter.ng-enter-active {
+  -webkit-transition: all 0.75s 0.3s;
+  -o-transition: all 0.75s 0.3s;
+  transition: all 0.75s 0.3s;
+}
+
+.effeckt-ng-2d-page-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-enter {
+  -webkit-transform: translate3d(0, -150%, 0);
+  -ms-transform: translate3d(0, -150%, 0);
+  -o-transform: translate3d(0, -150%, 0);
+  transform: translate3d(0, -150%, 0);
+  opacity: 0;
+}
+
+.effeckt-ng-2d-page-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-enter.ng-enter-active,
+.effeckt-ng-2d-page-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-leave,
+.effeckt-ng-2d-page-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view {
+  opacity: 1;
+  -webkit-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none;
+}
+
+.effeckt-ng-2d-page-preview-move:not(.effeckt-ng-open-menu) .effeckt-ng-view.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+
+.effeckt-ng-menu-1by1-fade {
+  /* ============================================
+  Menu Fade In
+  ============================================ */
+  /* ============================================
+    stagerring effect
+    list item slide in one by one :)
+   ============================================ */
+}
+
+.effeckt-ng-menu-1by1-fade .effeckt-ng-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 400;
+  width: 240px;
+  height: 100%;
+  will-change: opacity, transform;
+}
+
+.effeckt-ng-menu-1by1-fade:not(.effeckt-ng-open-menu) .effeckt-ng-nav {
+  -webkit-transition: opacity 0.5s, -webkit-transform 0s 0.5s;
+  -o-transition: opacity 0.5s, -o-transform 0s 0.5s;
+  transition: opacity 0.5s, -ms-transform 0s 0.5s;
+  transition: opacity 0.5s, transform 0s 0.5s;
+  opacity: 0;
+  -webkit-transform: translate3d(-100%, 0, 0);
+  -ms-transform: translate3d(-100%, 0, 0);
+  -o-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+}
+
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav {
+  -webkit-transition: opacity 0.5s 0.75s;
+  -o-transition: opacity 0.5s 0.75s;
+  transition: opacity 0.5s 0.75s;
+  opacity: 0.85;
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.effeckt-ng-menu-1by1-fade .effeckt-ng-nav h2,
+.effeckt-ng-menu-1by1-fade .effeckt-ng-nav ul li {
+  will-change: transform, opacity;
+}
+
+.effeckt-ng-menu-1by1-fade:not(.effeckt-ng-open-menu) .effeckt-ng-nav h2,
+.effeckt-ng-menu-1by1-fade:not(.effeckt-ng-open-menu) .effeckt-ng-nav ul li {
+  -webkit-transition: -webkit-transform 0s, opacity 0s;
+  -o-transition: -o-transform 0s, opacity 0s;
+  transition: -ms-transform 0s, opacity 0s;
+  transition: transform 0s, opacity 0s;
+  -webkit-transform: translate3d(-50px, 0, 0);
+  -ms-transform: translate3d(-50px, 0, 0);
+  -o-transform: translate3d(-50px, 0, 0);
+  transform: translate3d(-50px, 0, 0);
+  opacity: 0;
+}
+
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav h2,
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav ul li {
+  -webkit-transition: -webkit-transform 0.5s, opacity 1s;
+  -o-transition: -o-transform 0.5s, opacity 1s;
+  transition: -ms-transform 0.5s, opacity 1s;
+  transition: transform 0.5s, opacity 1s;
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav h2 {
+  -webkit-transition-delay: 1.25s;
+  -o-transition-delay: 1.25s;
+  transition-delay: 1.25s;
+}
+
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(1) {
+  -webkit-transition-delay: 1.35s;
+  -o-transition-delay: 1.35s;
+  transition-delay: 1.35s;
+}
+
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(2) {
+  -webkit-transition-delay: 1.45s;
+  -o-transition-delay: 1.45s;
+  transition-delay: 1.45s;
+}
+
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(3) {
+  -webkit-transition-delay: 1.55s;
+  -o-transition-delay: 1.55s;
+  transition-delay: 1.55s;
+}
+
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(4) {
+  -webkit-transition-delay: 1.65s;
+  -o-transition-delay: 1.65s;
+  transition-delay: 1.65s;
+}
+
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(5) {
+  -webkit-transition-delay: 1.75s;
+  -o-transition-delay: 1.75s;
+  transition-delay: 1.75s;
+}
+
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(6) {
+  -webkit-transition-delay: 1.85s;
+  -o-transition-delay: 1.85s;
+  transition-delay: 1.85s;
+}
+
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(7) {
+  -webkit-transition-delay: 1.95s;
+  -o-transition-delay: 1.95s;
+  transition-delay: 1.95s;
+}
+
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(8) {
+  -webkit-transition-delay: 2.05s;
+  -o-transition-delay: 2.05s;
+  transition-delay: 2.05s;
+}
+
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(9) {
+  -webkit-transition-delay: 2.15s;
+  -o-transition-delay: 2.15s;
+  transition-delay: 2.15s;
+}
+
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(10) {
+  -webkit-transition-delay: 2.25s;
+  -o-transition-delay: 2.25s;
+  transition-delay: 2.25s;
+}
+
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(11) {
+  -webkit-transition-delay: 2.35s;
+  -o-transition-delay: 2.35s;
+  transition-delay: 2.35s;
+}
+
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(12) {
+  -webkit-transition-delay: 2.45s;
+  -o-transition-delay: 2.45s;
+  transition-delay: 2.45s;
+}
+
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(13) {
+  -webkit-transition-delay: 2.55s;
+  -o-transition-delay: 2.55s;
+  transition-delay: 2.55s;
+}
+
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(14) {
+  -webkit-transition-delay: 2.65s;
+  -o-transition-delay: 2.65s;
+  transition-delay: 2.65s;
+}
+
+.effeckt-ng-menu-1by1-fade.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(15) {
+  -webkit-transition-delay: 2.75s;
+  -o-transition-delay: 2.75s;
+  transition-delay: 2.75s;
+}
+
+.effeckt-ng-menu-1by1-flip {
+  /* ============================================
+  Menu Fade In
+  ============================================ */
+  /* ============================================
+    stagerring effect
+    list item slide in one by one :)
+   ============================================ */
+}
+
+.effeckt-ng-menu-1by1-flip .effeckt-ng-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 400;
+  width: 240px;
+  height: 100%;
+  will-change: opacity, transform;
+}
+
+.effeckt-ng-menu-1by1-flip:not(.effeckt-ng-open-menu) .effeckt-ng-nav {
+  -webkit-transition: opacity 0.5s, -webkit-transform 0s 0.5s;
+  -o-transition: opacity 0.5s, -o-transform 0s 0.5s;
+  transition: opacity 0.5s, -ms-transform 0s 0.5s;
+  transition: opacity 0.5s, transform 0s 0.5s;
+  opacity: 0;
+  -webkit-transform: translate3d(-100%, 0, 0);
+  -ms-transform: translate3d(-100%, 0, 0);
+  -o-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav {
+  -webkit-transition: opacity 0.5s 0.75s;
+  -o-transition: opacity 0.5s 0.75s;
+  transition: opacity 0.5s 0.75s;
+  opacity: 0.85;
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.effeckt-ng-menu-1by1-flip .effeckt-ng-nav h2,
+.effeckt-ng-menu-1by1-flip .effeckt-ng-nav ul li {
+  -webkit-perspective: 500px;
+  -ms-perspective: 500px;
+  -o-perspective: 500px;
+  perspective: 500px;
+  will-change: transform, opacity;
+}
+
+.effeckt-ng-menu-1by1-flip:not(.effeckt-ng-open-menu) .effeckt-ng-nav h2,
+.effeckt-ng-menu-1by1-flip:not(.effeckt-ng-open-menu) .effeckt-ng-nav ul li {
+  -webkit-transition: -webkit-transform 0s, opacity 0s;
+  -o-transition: -o-transform 0s, opacity 0s;
+  transition: -ms-transform 0s, opacity 0s;
+  transition: transform 0s, opacity 0s;
+  -webkit-transform: rotateY(3deg) translate3d(-50px, 0, 0);
+  -ms-transform: rotateY(3deg) translate3d(-50px, 0, 0);
+  -o-transform: rotateY(3deg) translate3d(-50px, 0, 0);
+  transform: rotateY(3deg) translate3d(-50px, 0, 0);
+  opacity: 0;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav h2,
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav ul li {
+  -webkit-transition: -webkit-transform 0.5s, opacity 1s;
+  -o-transition: -o-transform 0.5s, opacity 1s;
+  transition: -ms-transform 0.5s, opacity 1s;
+  transition: transform 0.5s, opacity 1s;
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav h2 {
+  -webkit-transition-delay: 1.25s;
+  -o-transition-delay: 1.25s;
+  transition-delay: 1.25s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(1) {
+  -webkit-transition-delay: 1.35s;
+  -o-transition-delay: 1.35s;
+  transition-delay: 1.35s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(2) {
+  -webkit-transition-delay: 1.45s;
+  -o-transition-delay: 1.45s;
+  transition-delay: 1.45s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(3) {
+  -webkit-transition-delay: 1.55s;
+  -o-transition-delay: 1.55s;
+  transition-delay: 1.55s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(4) {
+  -webkit-transition-delay: 1.65s;
+  -o-transition-delay: 1.65s;
+  transition-delay: 1.65s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(5) {
+  -webkit-transition-delay: 1.75s;
+  -o-transition-delay: 1.75s;
+  transition-delay: 1.75s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(6) {
+  -webkit-transition-delay: 1.85s;
+  -o-transition-delay: 1.85s;
+  transition-delay: 1.85s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(7) {
+  -webkit-transition-delay: 1.95s;
+  -o-transition-delay: 1.95s;
+  transition-delay: 1.95s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(8) {
+  -webkit-transition-delay: 2.05s;
+  -o-transition-delay: 2.05s;
+  transition-delay: 2.05s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(9) {
+  -webkit-transition-delay: 2.15s;
+  -o-transition-delay: 2.15s;
+  transition-delay: 2.15s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(10) {
+  -webkit-transition-delay: 2.25s;
+  -o-transition-delay: 2.25s;
+  transition-delay: 2.25s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(11) {
+  -webkit-transition-delay: 2.35s;
+  -o-transition-delay: 2.35s;
+  transition-delay: 2.35s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(12) {
+  -webkit-transition-delay: 2.45s;
+  -o-transition-delay: 2.45s;
+  transition-delay: 2.45s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(13) {
+  -webkit-transition-delay: 2.55s;
+  -o-transition-delay: 2.55s;
+  transition-delay: 2.55s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(14) {
+  -webkit-transition-delay: 2.65s;
+  -o-transition-delay: 2.65s;
+  transition-delay: 2.65s;
+}
+
+.effeckt-ng-menu-1by1-flip.effeckt-ng-open-menu .effeckt-ng-nav li:nth-child(15) {
+  -webkit-transition-delay: 2.75s;
+  -o-transition-delay: 2.75s;
+  transition-delay: 2.75s;
+}
+
+/* ============================================
+Button Fade in out
+   ============================================ */
+
+.effeckt-ng-menu-btn {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 500;
+  will-change: opacity, transform;
+  -webkit-transition: opacity 1s 0.15s, -webkit-transform 1s 0.15s;
+  -o-transition: opacity 1s 0.15s, -o-transform 1s 0.15s;
+  transition: opacity 1s 0.15s, -ms-transform 1s 0.15s;
+  transition: opacity 1s 0.15s, transform 1s 0.15s;
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.effeckt-ng-menu-btn.effeckt-ng-open-menu {
+  -webkit-transition: opacity 0.3s, -webkit-transform 1s 0s;
+  -o-transition: opacity 0.3s, -o-transform 1s 0s;
+  transition: opacity 0.3s, -ms-transform 1s 0s;
+  transition: opacity 0.3s, transform 1s 0s;
+  opacity: 0;
+  -webkit-transform: translate3d(0, -200px, 0);
+  -ms-transform: translate3d(0, -200px, 0);
+  -o-transform: translate3d(0, -200px, 0);
+  transform: translate3d(0, -200px, 0);
+}

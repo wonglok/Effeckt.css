@@ -9,6 +9,7 @@
 
     // Are we expecting a touch or a click?
     buttonPressedEvent = ( isTouchDevice ) ? 'touchstart' : 'click',
+    buttonUpEvent = ( isTouchDevice ) ? 'touchend' : 'mouseup',
 
     // List of all animation/transition properties
     // with its animationEnd/transitionEnd event
@@ -36,6 +37,7 @@
   // Initialization method
   Effeckt.prototype.init = function() {
     this.buttonPressedEvent = buttonPressedEvent;
+    this.buttonUpEvent = buttonUpEvent;
 
     //event trigger after animation/transition end.
     this.transitionEndEventName = Modernizr ? transitionEndEventNames[Modernizr.prefixed('transition')] : getTransitionEndEventNames();
@@ -76,5 +78,14 @@
 
   // Creates a Effeckt object.
   window.Effeckt = new Effeckt();
+
+  if (!!angular){
+    angular
+      .module('ngEffeckt', [
+        'ngTouch',
+        'ngAnimate',
+        'ngRoute'
+      ]);
+  }
 
 })(this);
